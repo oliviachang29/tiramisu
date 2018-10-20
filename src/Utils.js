@@ -8,7 +8,9 @@ let Utils = {
     return {
       navBarTextFontFamily: 'BrandonGrotesque-Medium',
       navBarTextFontSize: 20,
-      navBarHidden: false
+      navBarHidden: false,
+      navBarBackgroundColor: "#FF7473",
+      navBarTextColor: "white"
     // navBarButtonColor: '#D8D8D8',
     }
   },

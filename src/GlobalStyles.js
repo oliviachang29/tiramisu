@@ -13,6 +13,7 @@ const GlobalStyles = StyleSheet.create({
     backgroundColor: "#FFFCF0",
   },
   innerContainer: {
+    marginTop: 20,
     marginLeft: 26,
     marginRight: 26
   },
