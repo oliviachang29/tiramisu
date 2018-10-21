@@ -25,7 +25,9 @@ let Utils = {
       ]
     }
   },
-  
+  uuid() {
+    return uuid.v4()
+  }
 }
 
 module.exports = Utils

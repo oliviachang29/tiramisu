@@ -7,6 +7,7 @@ import {
 } from 'react-native'
 import GlobalStyles from '../GlobalStyles'
 import Utils from '../Utils'
+import realm from '../realm'
 
 export default class ShowRecipe extends Component {
   static navigatorStyle = Utils.navigatorStyle()
@@ -22,20 +23,30 @@ export default class ShowRecipe extends Component {
 
   constructor(props) {
     super(props)
+    
+    var recipe
+    if (this.props.prevScreen == "app.Discover") {
+      recipe = this.props.recipe
+    } else if (this.props.prevScreen == 'app.Saved') {
+      recipe = realm.objects('Recipe').filtered('id = $0', this.props.recipe_id)[0]
+    }
+ 
     this.state = {
+      recipe: recipe
     }
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
   }
 
   render () {
-    var recipe = this.props.recipe
     return (
       <View style={GlobalStyles.container}>
+        <Image
+          style={styles.image}
+          source={{uri: this.state.recipe.image_url}}
+        />
         <View style={GlobalStyles.innerContainer}>
-
-          <Text>{recipe.title}</Text>
-          <Text>{recipe.desc}</Text>
-          <Text>{recipe.content}</Text>
+          <Text>{this.state.recipe.title}</Text>
+          <Text>{this.state.recipe.ingredients}</Text>
         </View>
       </View>
     )
@@ -52,6 +63,10 @@ export default class ShowRecipe extends Component {
 }
 
 const styles = StyleSheet.create({
+  image: {
+    height: 300,
+    width: '100%'
+  }
 })
 
 module.exports = ShowRecipe

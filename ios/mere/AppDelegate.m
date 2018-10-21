@@ -3,16 +3,11 @@
 #import <React/RCTBundleURLProvider.h>
 #import "RCCManager.h"
 #import <React/RCTRootView.h>
-@import GooglePlaces;
-@import GoogleMaps;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-  [GMSPlacesClient provideAPIKey:@"AIzaSyCnfOD_qLyGpOC4W1rlXa7PiBhDyLD_S5s"];
-  [GMSServices provideAPIKey:@"AIzaSyCnfOD_qLyGpOC4W1rlXa7PiBhDyLD_S5s"];
 
   NSURL *jsCodeLocation;
 

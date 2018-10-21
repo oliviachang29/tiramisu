@@ -8,23 +8,24 @@ import {
 } from 'react-native'
 import GlobalStyles from '../GlobalStyles'
 import Utils from '../Utils'
-import ListViewItem from '../components/ListViewItem'
+import ListViewItem from '../components/Saved/ListViewItem'
+import EmptyState from '../components/Saved/EmptyState'
+import realm from '../realm'
 
 export default class Saved extends Component {
   static navigatorStyle = Utils.navigatorStyle()
 
   constructor(props) {
     super(props)
-     // var src = realm.objects('Program')
+    var src = realm.objects('Recipe')
 
-      this.state = {
-        // src: src
-      }
+    this.state = {
+      src: src
+    }
 
-      // realm.addListener('change', () => {
-      //   this.setState({ src: realm.objects('Program') })
-      // })
-
+    realm.addListener('change', () => {
+      this.setState({ src: realm.objects('Recipe') })
+    })
   }
 
   makeRemoteRequest = () => {    
@@ -72,14 +73,17 @@ export default class Saved extends Component {
     return (
       <View style={[GlobalStyles.container]}>
         <View style={GlobalStyles.innerContainer}>
-         <FlatList 
-            data={[{title: "Title Text"}]} 
-            keyExtractor={item => item.title}
-            renderItem={({item}) => 
-              <ListViewItem 
-                item={item}
-                navigator={this.props.navigator}/>
-            } 
+          <FlatList
+            data={Array.from(this.state.src)}
+            style={styles.FlatList}
+            showsVerticalScrollIndicator={false}
+            keyExtractor={item => item.id}
+            renderItem={({item}) =>
+              <ListViewItem item={item}
+                navigator={this.props.navigator} />}
+          />
+          <EmptyState 
+            shouldRender={this.state.src.length == 0}
           />
         </View>
       </View>
