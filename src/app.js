@@ -21,5 +21,12 @@ Navigation.startTabBasedApp({
       // selectedIcon: require('../img/one_selected.png'), // iOS only
       title: 'Saved'
     },
+    {
+      label: 'Onboarding',
+      screen: 'app.Onboarding', // this is a registered name for a screen
+      // icon: require('../img/one.png'),
+      // selectedIcon: require('../img/one_selected.png'), // iOS only
+      title: 'Onboarding'
+    },
   ]
 });

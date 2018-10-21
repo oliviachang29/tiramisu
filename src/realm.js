@@ -11,6 +11,8 @@ Recipe.schema = {
     dateCreated: 'date',
     title: {type: 'string', default: ''},
     image_url: {type: 'string', default: ''},
+    source_url: {type: 'string', default: ''},
+    social_rank: {type: 'double', default: ''},
     ingredients: {type: 'string', default: ''},
     userMadeRecipe: {type: 'bool', default: false},
     rating: {type: 'int', default: 0},
@@ -19,5 +21,5 @@ Recipe.schema = {
 
 export default new Realm({
   schema: [Recipe],
-  schemaVersion: 2
+  schemaVersion: 3
 })

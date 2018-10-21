@@ -7,7 +7,7 @@ import realm from '../../realm'
 class ListViewItem extends Component {
 
   openRecipe(title) {
-    this.props.navigator.showModal({
+    this.props.navigator.push({
       screen: 'app.ShowRecipe',
       title: 'Recipe',
       passProps: {
@@ -86,10 +86,18 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+    marginBottom: 15,
     justifyContent: 'center',
     width: 100,
+    padding: 15,
     borderRadius: 8,
     marginLeft: 8,
+  },
+  swipeoutText: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold'
   },
   editContainer: {
     backgroundColor: '#ACABFF'

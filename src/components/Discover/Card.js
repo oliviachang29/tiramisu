@@ -12,7 +12,6 @@ class Card extends Component {
         <Image
           style={styles.cardImage}
           source={{uri: this.props.card.image_url}}
-          blurRadius={this.props.card.blurRadius}
         />
       </View>
     )

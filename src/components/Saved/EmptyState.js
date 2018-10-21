@@ -14,7 +14,7 @@ class EmptyState extends Component {
       return (
         <View>
           <View style={styles.emptyStateContainer}>
-            <Image source={require('../../assets/images/empty-state.png')} style={styles.image} />
+            <Image source={require('../../assets/images/empty-state.png')} style={GlobalStyles.image} />
             <View style={styles.topView}>
               <Text allowFontScaling={false} style={[GlobalStyles.title, styles.topTitle]}>You haven't saved any recipes. 😢</Text>
               <Text allowFontScaling={false} style={[GlobalStyles.span, styles.topText]}>Return back here once you save a recipe.</Text>
@@ -37,10 +37,6 @@ class EmptyState extends Component {
 
 const styles = StyleSheet.create({
   emptyStateContainer: {
-  },
-  image: {
-    height: 279,
-    width: 300,
   },
   topView: {
     alignItems: 'center'

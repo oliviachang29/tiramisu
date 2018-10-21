@@ -3,10 +3,14 @@ import Notification from './Notification'
 import Discover from './Discover'
 import ShowRecipe from './ShowRecipe'
 import Saved from './Saved'
+import Onboarding from './Onboarding'
+import ShowURL from './ShowURL'
 
 export default function () {
   Navigation.registerComponent('app.Notification', () => Notification)
   Navigation.registerComponent('app.Discover', () => Discover)
   Navigation.registerComponent('app.ShowRecipe', () => ShowRecipe)
   Navigation.registerComponent('app.Saved', () => Saved)
+  Navigation.registerComponent('app.ShowURL', () => ShowURL)
+  Navigation.registerComponent('app.Onboarding', () => Onboarding)
 }

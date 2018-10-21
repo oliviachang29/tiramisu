@@ -58,10 +58,16 @@ const GlobalStyles = StyleSheet.create({
     fontFamily: 'FreightDisplayW01-Book',
     letterSpacing: 0
   },
+  buttonContainer: {
+    padding: 20,
+    paddingLeft: 50,
+    paddingRight: 50,
+    borderRadius: 200,
+    backgroundColor: "#FF7473",
+    alignSelf: 'center'
+  },
   buttonStyleText: {
-    fontFamily: 'BrandonGrotesque-Bold',
-    fontSize: 16,
-    letterSpacing: 2.5
+    color: 'white',
   },
   thinUnderline: {
     borderBottomColor: '#95989A',
@@ -90,75 +96,10 @@ const GlobalStyles = StyleSheet.create({
     height: 11,
     borderRadius: 100
   },
-
-  // screens/Today
-  // screens/Entries/Edit
-  emoji: {
-    fontSize: 24,
-    backgroundColor: 'transparent',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    marginLeft: 2
+  image: {
+    height: 279,
+    width: 300,
   },
-  emoji_selected: {
-    backgroundColor: '#DD5F8E',
-    borderRadius: 4,
-    paddingTop: 4,
-    paddingBottom: 4
-  },
-  emoji_container: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginLeft: 42,
-    marginRight: 42,
-    marginBottom: 35
-  },
-  card_container: {
-    borderRadius: 5,
-    padding: 24,
-    paddingBottom: 34,
-    margin: 24,
-    marginTop: 16,
-    marginBottom: 16
-  },
-  card_textInput_container: {
-    marginBottom: 20
-  },
-  card_textInput_prompt: {
-    marginTop: 10,
-    marginBottom: 20,
-    fontSize: 20,
-    color: '#4A4A4A'
-  },
-  card_textInput: {
-    color: '#4A4A4A',
-    fontSize: 20,
-    height: 40
-    // marginBottom: 10,
-  },
-  card_location_text: {
-    marginTop: 20
-  },
-  linearGradient: {
-    height: 2,
-    // marginTop: -5
-  },
-
-  // components/Shared/Card.js
-  // screens/Answers/Show.js
-  card_question: {
-    color: '#4A4A4A',
-    fontSize: 20,
-    fontFamily: 'FreightDispBold',
-    marginBottom: 17,
-    marginTop: 15
-  },
-  card_answer: {
-    color: '#808080',
-    fontSize: 20,
-    marginBottom: 15
-  }
 })
 
 module.exports = GlobalStyles

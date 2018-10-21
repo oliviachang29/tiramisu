@@ -6,10 +6,10 @@ class Button extends Component {
   render () {
     return (
       <TouchableOpacity
-        style={this.props.viewStyle}
+        style={[GlobalStyles.buttonContainer, this.props.viewStyle]}
         onPress={this.props.onPress}
         onLongPress={this.props.onLongPress}>
-        <Text style={[GlobalStyles.buttonStyleText, this.props.textStyle]}>{this.props.text}</Text>
+        <Text style={[GlobalStyles.p, GlobalStyles.buttonStyleText, this.props.textStyle]}>{this.props.text}</Text>
       </TouchableOpacity>
     )
   }
