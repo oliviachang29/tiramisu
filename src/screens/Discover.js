@@ -118,14 +118,6 @@ export default class Discover extends Component {
       })
     })
 
-    this.props.navigator.showInAppNotification({
-      screen: 'app.Notification',
-      passProps: {
-        title: '✓ Your recipe was saved.',
-        type: 'success'
-      }
-    })
-
     console.log('new recipe saved')
   }
 

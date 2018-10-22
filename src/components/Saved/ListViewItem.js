@@ -22,14 +22,6 @@ class ListViewItem extends Component {
     realm.write(() => {
       realm.delete(recipe)
     })
-
-    this.props.navigator.showInAppNotification({
-        screen: 'app.Notification',
-        passProps: {
-          title: '✓ Your recipe was removed.',
-          type: 'success'
-        }
-      })
   }
 
   render () {
