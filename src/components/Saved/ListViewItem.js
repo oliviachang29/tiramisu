@@ -6,7 +6,7 @@ import realm from '../../realm'
 
 class ListViewItem extends Component {
 
-  openRecipe(title) {
+  openRecipe() {
     this.props.navigator.push({
       screen: 'app.ShowRecipe',
       title: 'Recipe',
@@ -38,7 +38,7 @@ class ListViewItem extends Component {
         backgroundColor: 'transparent',
         component: 
           <View style={[styles.buttonContainer, styles.deleteContainer]}>
-            <Text style={[GlobalStyles.text, styles.swipeoutText]}>Remove recipe</Text>
+            <Text style={[GlobalStyles.p, styles.swipeoutText]}>Remove recipe</Text>
           </View>
         ,
         onPress: () => this.deleteRecipe(this.props.item.id)
@@ -46,34 +46,42 @@ class ListViewItem extends Component {
     ]
     return (
       <Swipeout right={swipeoutBtns} backgroundColor='transparent' style={styles.swipeout} buttonWidth={108}>
+        <View style={GlobalStyles.shadow}>
         <TouchableOpacity
-          style={styles.container}
-          onPress={() => this.openRecipe(this.props.item.title)}>
+          style={[styles.container]}
+          onPress={() => this.openRecipe()}>
           <Image
             style={styles.image}
             source={{uri: this.props.item.image_url}}
           />
           <View style={styles.textContainer}>
-            <Text style={styles.text}>{this.props.item.title}</Text>
+            <Text style={[GlobalStyles.h4, styles.text]}>{this.props.item.title}</Text>
           </View>
         </TouchableOpacity>
+        </View>
       </Swipeout>
     )
   }
 }
 
+const borderRadius = 8
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
     flex: 1,
-    borderRadius: 8,
+    borderRadius: borderRadius,
     flexDirection: 'row',
     overflow: 'hidden',
-    marginBottom: 15
+    marginBottom: 15,
+    paddingRight: 30,
+    marginLeft: 26,
+    marginRight: 26
   },
   image: {
     width: '30%',
-    height: 100,
+    minHeight: 100,
+    height: '100%',
     marginRight: 15
   },
   textContainer: {
@@ -83,6 +91,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
+    color: "#454545",
+    paddingTop: 20,
+    paddingBottom: 20
   },
   buttonContainer: {
     flex: 1,
@@ -90,8 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 100,
     padding: 15,
-    borderRadius: 8,
-    marginLeft: 8,
+    borderRadius: borderRadius,
   },
   swipeoutText: {
     textAlign: 'center',

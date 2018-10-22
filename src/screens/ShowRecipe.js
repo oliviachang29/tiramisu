@@ -4,7 +4,8 @@ import {
   Text, 
   StyleSheet,
   Image,
-  Share
+  Share,
+  ScrollView
 } from 'react-native'
 import GlobalStyles from '../GlobalStyles'
 import Utils from '../Utils'
@@ -24,6 +25,7 @@ export default class ShowRecipe extends Component {
       this.recipe = realm.objects('Recipe').filtered('id = $0', this.props.recipe_id)[0]
       this.date = moment(this.recipe.dateCreated).format('MM/DD/YYYY');
     }
+  
 
     this.props.navigator.setButtons({
       rightButtons: [
@@ -52,17 +54,16 @@ export default class ShowRecipe extends Component {
 
   determinePopularity(social_rank) {
     if (social_rank) {
-      var comment = "This recipe is "
+      var comment = "Popularity: "
       if (social_rank <= 30) {
-        comment += "not well known"
+        comment += "Low"
       } else if (social_rank <= 60) {
-        comment += "relatively unknown"
+        comment += "Medium"
       } else if (social_rank <= 90) {
-        comment += "popular"
+        comment += "High"
       } else if (social_rank <= 100) {
-        comment += "very popular"
+        comment += "Very high"
       }
-      comment += "."
       return comment
     }
   }
@@ -83,19 +84,23 @@ export default class ShowRecipe extends Component {
           style={styles.image}
           source={{uri: this.recipe.image_url}}
         />
-        <View style={GlobalStyles.innerContainer}>
-          <Text style={GlobalStyles.h1}>{this.recipe.title}</Text>
-          {!this.date ? null : 
-            <Text style={GlobalStyles.p}>You saved this recipe on {this.date}.</Text>
-          }
-          <Text style={GlobalStyles.p}>{this.determinePopularity(this.recipe.social_rank)}</Text>
-          {/*<Text>{this.recipe.ingredients}</Text>*/}
-        </View>
-        <Button
-          text="Open Recipe"
-          viewStyle={styles.openSourceURLButton}
-          onPress={() => this.openSourceURL(this.recipe.source_url)}
-        />
+        <ScrollView 
+          style={[GlobalStyles.innerContainer, styles.innerContainer]}
+          showsVerticalScrollIndicator={false}>
+          <View style={[styles.textView, GlobalStyles.shadow]}>
+            <Text style={[GlobalStyles.h1, styles.title]}>{this.recipe.title}</Text>
+            {!this.date ? null : 
+              <Text style={[GlobalStyles.p, styles.p]}>You saved this recipe on {this.date}.</Text>
+            }
+            <Text style={[GlobalStyles.p, styles.p]}>{this.determinePopularity(this.recipe.social_rank)}</Text>
+            {/*<Text>{this.recipe.ingredients}</Text>*/}
+            <Button
+              text="Open Recipe"
+              viewStyle={styles.openSourceURLButton}
+              onPress={() => this.openSourceURL(this.recipe.source_url)}
+            />
+          </View>
+        </ScrollView>
       </View>
     )
   }
@@ -111,17 +116,29 @@ export default class ShowRecipe extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    // backgroundColor: 'white'
+  },
   image: {
-    height: 300,
+    height: 250,
     width: '100%'
   },
   innerContainer: {
-    flexDirection: 'row',
-    flex: 1
+    // paddingTop: 34
   },
   openSourceURLButton: {
-    marginTop: 40,
+    marginTop: 30,
     justifyContent: "flex-end"
+  },
+  title: {
+    marginBottom: 10, 
+  },
+  p: {
+    marginTop: 10,
+  },
+  textView: {
+    backgroundColor: 'white',
+    padding: 25
   }
 })
 

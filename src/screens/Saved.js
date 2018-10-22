@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import { 
+  ScrollView,
   View, 
   Text, 
   StyleSheet,
-  Image,
-  FlatList
+  FlatList,
+  TextInput,
+  Dimensions
 } from 'react-native'
 import GlobalStyles from '../GlobalStyles'
 import Utils from '../Utils'
 import ListViewItem from '../components/Saved/ListViewItem'
 import EmptyState from '../components/Saved/EmptyState'
 import realm from '../realm'
+const deviceWidth = Dimensions.get('window').width
 
 export default class Saved extends Component {
   static navigatorStyle = Utils.navigatorStyle()
@@ -20,59 +23,50 @@ export default class Saved extends Component {
     var src = realm.objects('Recipe')
 
     this.state = {
+      data: src,
       src: src
     }
+
+    realm.write(() => {
+      // realm.delete(realm.objects('Recipe'))
+    })
 
     realm.addListener('change', () => {
       this.setState({ src: realm.objects('Recipe') })
     })
   }
+ 
+  setSearchText(event) {
+     let searchText = event.nativeEvent.text;
+     this.setState({searchText});
 
-  makeRemoteRequest = () => {    
-    const url = `https://randomuser.me/api/?&results=20`;
-    this.setState({ loading: true });
-    fetch(url)      
-      .then(res => res.json())      
-      .then(res => {        
-        this.setState({          
-          data: res.results,          
-          error: res.error || null,          
-          loading: false,        
-        });        
-       this.arrayholder = res.results;      
-     })      
-     .catch(error => {        
-       this.setState({ error, loading: false });      
-     });  
-  };
+     let filteredData = this.filterNotes(searchText, this.state.src);
+     this.setState({
+       src: filteredData,
+     });
 
-  renderHeader = () => {    
-    return (      
-      <SearchBar        
-        placeholder="Type Here..."        
-        lightTheme        
-        round        
-        onChangeText={text => this.searchFilterFunction(text)}
-        autoCorrect={false}             
-      />    
-    );  
-  };
+    }
 
-  searchFilterFunction = text => {    
-  const newData = this.arrayholder.filter(item => {      
-    const itemData = `${item.name.title.toUpperCase()}   
-    ${item.name.first.toUpperCase()} ${item.name.last.toUpperCase()}`;
-     const textData = text.toUpperCase();
-      
-     return itemData.indexOf(textData) > -1;    
-  });    
-  this.setState({ data: newData });  
-};
+    filterNotes(searchText, src) {
+      let text = searchText.toLowerCase();
+
+      return this.state.data.filter(n => {
+        return n.title.toLowerCase().search(text) !== -1;
+      });
+    }
 
   render () {
     return (
-      <View style={[GlobalStyles.container]}>
-        <View style={GlobalStyles.innerContainer}>
+      <ScrollView
+        style={[GlobalStyles.container, styles.ScrollView]}
+        showsVerticalScrollIndicator={false}>
+         <TextInput
+         autoCorrect
+         style={[styles.searchBar]}
+         value={this.state.searchText}
+         onChange={this.setSearchText.bind(this)}
+         placeholder="Search" />
+        <View style={styles.innerContainer}>
           <FlatList
             data={Array.from(this.state.src)}
             style={styles.FlatList}
@@ -83,15 +77,36 @@ export default class Saved extends Component {
                 navigator={this.props.navigator} />}
           />
           <EmptyState 
-            shouldRender={this.state.src.length == 0}
+            shouldRender={this.state.data.length == 0}
           />
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  ScrollView: {
+    paddingTop: 20
+  },
+  innerContainer: {
+    // don't enable left/right margin (already done in listviewitem)
+    marginTop: 18
+  },
+  searchBar: {
+    backgroundColor: 'white',
+    marginLeft: 26,
+    marginRight: 26,
+    paddingLeft: 20,
+    width: deviceWidth - 52,
+    fontSize: 16,
+    height: 50,
+    // marginBottom: 10,
+    borderWidth: 1.5,
+    borderColor: '#EDEDED',
+    borderRadius: 4,
+    fontFamily: 'Circular-Book'
+  }
 })
 
 module.exports = Saved

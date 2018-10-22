@@ -6,12 +6,14 @@ import {Navigation} from 'react-native-navigation'
 let Utils = {
   navigatorStyle () {
     return {
-      // navBarTextFontFamily: 'Circular',
+      navBarTextFontFamily: 'Circular-Bold',
       navBarHidden: false,
       navBarBackgroundColor: "#FF7473",
       navBarTextColor: "white",
       navBarButtonColor: 'white',
-      navBarRightButtonFontSize: 10
+      navBarRightButtonFontSize: 10,
+      navBarNoBorder: true,
+      statusBarTextColorSchemeSingleScreen: 'light'
     }
   },
   uuid() {

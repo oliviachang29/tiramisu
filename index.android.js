@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-export default class mere extends Component {
+export default class Tiramisu extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('mere', () => mere);
+AppRegistry.registerComponent('Tiramisu', () => Tiramisu);

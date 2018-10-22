@@ -9,24 +9,22 @@ Navigation.startTabBasedApp({
   tabs: [
     {
       label: 'Discover',
-      screen: 'app.Discover', // this is a registered name for a screen
-      // icon: require('../img/one.png'),
-      // selectedIcon: require('../img/one_selected.png'), // iOS only
-      title: 'Discover'
+      screen: 'app.Discover',
+      icon: require('./assets/images/compass.png'),
+      // selectedIcon: require('../img/one_selected.png'),
+      title: 'Discover',
+      navigatorStyle: Utils.navigatorStyle()
     },
     {
       label: 'Saved',
-      screen: 'app.Saved', // this is a registered name for a screen
-      // icon: require('../img/one.png'),
-      // selectedIcon: require('../img/one_selected.png'), // iOS only
-      title: 'Saved'
+      screen: 'app.Saved',
+      icon: require('./assets/images/saved.png'),
+      // selectedIcon: require('../img/one_selected.png'),
+      title: 'Saved',
+      navigatorStyle: Utils.navigatorStyle()
     },
-    {
-      label: 'Onboarding',
-      screen: 'app.Onboarding', // this is a registered name for a screen
-      // icon: require('../img/one.png'),
-      // selectedIcon: require('../img/one_selected.png'), // iOS only
-      title: 'Onboarding'
-    },
-  ]
+  ],
+  tabsStyle: {
+    tabBarSelectedButtonColor: "#FF7473",
+  }
 });

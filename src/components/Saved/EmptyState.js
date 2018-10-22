@@ -16,8 +16,8 @@ class EmptyState extends Component {
           <View style={styles.emptyStateContainer}>
             <Image source={require('../../assets/images/empty-state.png')} style={GlobalStyles.image} />
             <View style={styles.topView}>
-              <Text allowFontScaling={false} style={[GlobalStyles.title, styles.topTitle]}>You haven't saved any recipes. 😢</Text>
-              <Text allowFontScaling={false} style={[GlobalStyles.span, styles.topText]}>Return back here once you save a recipe.</Text>
+              <Text allowFontScaling={false} style={[GlobalStyles.h1, styles.topTitle]}>You haven't saved any recipes.</Text>
+              <Text allowFontScaling={false} style={[GlobalStyles.p, styles.topText]}>Return back here once you save a recipe.</Text>
             </View>
           </View>
         </View>
@@ -37,12 +37,20 @@ class EmptyState extends Component {
 
 const styles = StyleSheet.create({
   emptyStateContainer: {
+    paddingTop: 50
   },
   topView: {
     alignItems: 'center'
   },
+  topTitle: {
+    marginTop: 30,
+    // fontSize: 25,
+    textAlign: 'center',
+  },
   topText: {
-    marginTop: 10
+    marginTop: 20,
+    textAlign: 'center',
+    width: '70%'
   },
   newProgramButtonView: {
     alignSelf: 'center',

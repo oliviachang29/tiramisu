@@ -1,5 +1,5 @@
 {
-	"name": "mere",
+	"name": "Tiramisu",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -18,7 +18,8 @@
 		"react-native-navigation": "^1.1.205",
 		"react-native-simple-store": "^1.3.0",
 		"react-native-swipeout": "^2.3.6",
-		"react-native-swiper": "^1.5.13"
+		"react-native-swiper": "^1.5.13",
+		"realm": "^2.1.1"
 	},
 	"devDependencies": {
 		"babel-jest": "22.0.4",

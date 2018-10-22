@@ -10,12 +10,12 @@ const GlobalStyles = StyleSheet.create({
   // Bold, black text at top left of each screen
   container: {
     flex: 1,
-    backgroundColor: "#FFFCF0",
+    backgroundColor: "#F5F5F5",
   },
   innerContainer: {
-    marginTop: 20,
-    marginLeft: 26,
-    marginRight: 26
+    paddingTop: 20,
+    paddingLeft: 26,
+    paddingRight: 26
   },
   centered: {
     alignSelf: 'center',
@@ -36,26 +36,26 @@ const GlobalStyles = StyleSheet.create({
     fontWeight: 'bold'
   },
   h1: {
-    color: '#808080',
     fontSize: 20,
     fontWeight: '500',
-    fontFamily: 'BrandonGrotesque-Bold'
+    fontFamily: 'Circular-Book',
   },
   h4: {
-    fontFamily: 'FreightDispBold',
+    fontFamily: 'Circular-Book',
     fontSize: 18
   },
   h5: {
     color: '#9B9B9B',
-    fontFamily: 'FreightDisplayW01-Book',
+    fontFamily: 'Circular-Book',
     fontSize: 18,
     letterSpacing: 0
   },
   p: {
     color: '#4A4A4A',
-    fontSize: 20,
+    lineHeight: 18,
+    fontSize: 16,
     fontWeight: 'normal',
-    fontFamily: 'FreightDisplayW01-Book',
+    fontFamily: 'Circular-Book',
     letterSpacing: 0
   },
   buttonContainer: {
@@ -68,6 +68,8 @@ const GlobalStyles = StyleSheet.create({
   },
   buttonStyleText: {
     color: 'white',
+    fontSize: 18,
+    fontFamily: 'Circular-Medium',
   },
   thinUnderline: {
     borderBottomColor: '#95989A',
@@ -79,7 +81,7 @@ const GlobalStyles = StyleSheet.create({
     paddingBottom: 6
   },
   success: {
-    color: '#86CB92',
+    color: '#FF7473',
     fontSize: 20,
     fontWeight: 'normal',
     marginBottom: 25
@@ -88,7 +90,10 @@ const GlobalStyles = StyleSheet.create({
     shadowColor: '#565656',
     shadowOffset: {width: 2, height: 2},
     shadowRadius: 10,
-    shadowOpacity: 0.19
+    shadowOpacity: 0.19,
+    elevation: 10,
+    zIndex: 100
+    // backgroundColor: '#0000'
   },
   separator: {
     backgroundColor: '#F4F4F4',

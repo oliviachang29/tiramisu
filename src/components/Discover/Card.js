@@ -21,10 +21,8 @@ class Card extends Component {
 
 const styles = StyleSheet.create({
   card: {
-    height: deviceHeight - 200,
+    height: deviceHeight - 300,
     width: deviceWidth - 36,
-    borderRadius: 4,
-    justifyContent: "center",
   },
   cardImage: {
     flex: 1
